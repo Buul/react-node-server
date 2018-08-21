@@ -1,9 +1,10 @@
 import TransactionsController from "../controllers/transactions";
 
-export default (app, transactions) => {
+export default (app, transactions, auth) => {
   const transactionsController = new TransactionsController(transactions);
   app
     .route("/transactions")
+    .all(auth.authenticate())
     .get((_req, res) => {
       transactionsController.getAll().then(response => {
         res.status(response.statusCode);
@@ -18,6 +19,7 @@ export default (app, transactions) => {
     });
   app
     .route("/transactions/:id")
+    .all(auth.authenticate())
     .get((req, res) => {
       transactionsController
         .getById({ idTransacao: req.params.id })

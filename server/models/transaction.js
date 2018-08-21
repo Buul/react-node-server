@@ -13,14 +13,14 @@ export default (sequelize, DataType) => {
       }
     },
     valor: {
-      type: DataType.INTEGER,
+      type: DataType.FLOAT,
       allowNull: false,
       validate: {
         notEmpty: true
       }
     },
     data: {
-      type: DataType.INTEGER,
+      type: DataType.STRING,
       allowNull: false,
       validate: {
         notEmpty: true

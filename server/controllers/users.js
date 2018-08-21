@@ -7,25 +7,25 @@ const defaultResponse = (data, statusCode = HttpStatus.OK) => ({
 const errorResponse = (message, statusCode = HttpStatus.BAD_GATEWAY) =>
   defaultResponse({ error: message }, statusCode);
 
-class transactionsController {
-  constructor(Transactions) {
-    this.Transactions = Transactions;
+class usersController {
+  constructor(Users) {
+    this.Users = Users;
   }
 
   getAll() {
-    return this.Transactions.findAll({})
+    return this.Users.findAll({})
       .then(result => defaultResponse(result))
       .catch(error => errorResponse(error.message));
   }
 
   getById(params) {
-    return this.Transactions.findOne({ where: params })
+    return this.Users.findOne({ where: params })
       .then(result => defaultResponse(result))
       .catch(error => errorResponse(error.message));
   }
 
   create(data) {
-    return this.Transactions.create(data)
+    return this.Users.create(data)
       .then(result => defaultResponse(result, HttpStatus.CREATED))
       .catch(error =>
         errorResponse(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
@@ -33,7 +33,7 @@ class transactionsController {
   }
 
   update(data, params) {
-    return this.Transactions.update(data, { where: params })
+    return this.Users.update(data, { where: params })
       .then(result => defaultResponse(result))
       .catch(error =>
         errorResponse(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
@@ -41,7 +41,7 @@ class transactionsController {
   }
 
   delete(params) {
-    return this.Transactions.destroy({ where: params })
+    return this.Users.destroy({ where: params })
       .then(result => defaultResponse(result, HttpStatus.NO_CONTENT))
       .catch(error =>
         errorResponse(error.message, HttpStatus.UNPROCESSABLE_ENTITY)
@@ -49,4 +49,4 @@ class transactionsController {
   }
 }
 
-export default transactionsController;
+export default usersController;

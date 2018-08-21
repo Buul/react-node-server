@@ -8,5 +8,7 @@ export default {
     define: {
       underscored: true
     }
-  }
+  },
+  jwtSecret: "SeConduct0r",
+  jwtSession: { session: false }
 };
