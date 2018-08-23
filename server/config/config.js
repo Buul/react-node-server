@@ -10,5 +10,17 @@ export default {
     }
   },
   jwtSecret: "SeConduct0r",
-  jwtSession: { session: false }
+  jwtSession: { session: false },
+  cors: {
+    origin: "*",
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Content-Length",
+      "X-Requested-With",
+      "Accept"
+    ],
+    methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 };
